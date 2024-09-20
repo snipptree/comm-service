@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	webPort = "80"
+	webPort = "8085"
 )
 
 type Config struct {
