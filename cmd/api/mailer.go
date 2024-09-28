@@ -6,11 +6,13 @@ import (
 	"log"
 	"time"
 
+	"github.com/aws/aws-sdk-go-v2/service/ses"
 	"github.com/vanng822/go-premailer/premailer"
 	mail "github.com/xhit/go-simple-mail/v2"
 )
 
 type Mail struct {
+	SESClient   *ses.Client
 	Domain      string
 	Host        string
 	Port        int
@@ -19,6 +21,7 @@ type Mail struct {
 	Encryption  string
 	FromAddress string
 	FromName    string
+	FromEmail   string
 }
 
 type Message struct {
@@ -27,7 +30,7 @@ type Message struct {
 	To          string
 	Subject     string
 	Attachments []string
-	Data        any
+	Data        string
 	DataMap     map[string]any
 }
 
