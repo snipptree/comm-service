@@ -1,8 +1,5 @@
 FROM alpine:latest
-
-RUN mkdir /app
-
-COPY communicationApp /app
-COPY templates /templates
-
-CMD [ "/app/communicationApp"]
+WORKDIR /app
+COPY communicationApp /app/communicationApp
+EXPOSE 80
+CMD ["./communicationApp"]
