@@ -6,9 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
-	"github.com/aws/aws-sdk-go-v2/credentials"
 	"github.com/aws/aws-sdk-go-v2/service/ses"
 )
 
@@ -51,8 +49,7 @@ func createMail() Mail {
 	// return m
 
 	// Load AWS SDK configuration
-	staticCredentials := aws.NewCredentialsCache(credentials.NewStaticCredentialsProvider("REDACTED_AWS_ACCESS_KEY_ID", "REDACTED_AWS_SECRET_ACCESS_KEY", ""))
-	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("ap-south-1"), config.WithCredentialsProvider(staticCredentials))
+	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("ap-south-1"))
 	if err != nil {
 		log.Fatalf("unable to load AWS SDK config: %v", err)
 	}
